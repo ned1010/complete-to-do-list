@@ -14,9 +14,6 @@ const devConfig = `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD
 //postgres database from the deployment service for instance heroku
 const proConfig = {
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
 };
 
 const pool = new Pool({
