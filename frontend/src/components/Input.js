@@ -27,13 +27,14 @@ export default function Input() {
       <form onSubmit={submitHandle}>
         <input
           type="text"
-          className="input"
+          className="input-form"
           onChange={(e) => setTask(e.target.value)}
           value={task}
+          placeholder="Add your to do list for today"
         />
-        <button>
+        <button className="btn">
           {" "}
-          <BsFillPlusCircleFill />
+          <BsFillPlusCircleFill className="btn-icon" />
         </button>
       </form>
     </div>

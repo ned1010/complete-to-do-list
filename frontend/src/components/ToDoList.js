@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Input from "./Input";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 export default function ToDoList() {
   //storing items retrived from backend to state
@@ -40,14 +41,14 @@ export default function ToDoList() {
   };
 
   return (
-    <div>
-      <h1>To Do List</h1>
+    <div className="container">
+      <h2 className="title">To Do List</h2>
       <Input />
       {tasks.map((item) => {
         return (
-          <div key={item.todo_id}>
+          <div key={item.todo_id} className="list">
             <li>{item.task}</li>
-            <button onClick={() => deleteToDo(item.todo_id)}>delete</button>
+            <button onClick={() => deleteToDo(item.todo_id)} className="btn"> <AiFillCloseCircle className="icon" /></button>
           </div>
         );
       })}
