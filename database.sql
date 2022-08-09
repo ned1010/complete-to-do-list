@@ -1,4 +1,4 @@
--- CREATE DATABASE completetodo;
+CREATE DATABASE completetodo;
 
 CREATE TABLE todo(
     todo_id SERIAL PRIMARY KEY,
