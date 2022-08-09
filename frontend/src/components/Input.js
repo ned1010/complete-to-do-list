@@ -8,12 +8,17 @@ export default function Input() {
     e.preventDefault();
     try {
       const body = { task };
-      const response = await fetch("http://localhost:4000/todos", {
+
+      //proxy - is used for only development
+      //so if there is there is no localhost, by default it will use heroku domain
+      //heroku app is just serving our static file and database
+      const response = await fetch("/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
+      //this helps to reload the page after adding
       window.location = "/";
 
       console.log(response);

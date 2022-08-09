@@ -2,14 +2,30 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const path = require("path");
+const PORT = process.env.PORT || 4000;
 
+//process.env.PORT
+//process.env.NODE_ENV
+
+//middleware
 app.use(cors());
 app.use(express.json());
 
-const port = process.env.PORT || 4000;
+app.use(express.static(path.join(__dirname, "frontend/build")));
+// app.use(express.static("client/build")) using relative path
+
+
+if (process.env.NODE_ENV === "production"){
+  //server static content
+  //npm run build
+  //running from the static folder
+  app.use(express.static(path.join(__dirname, "frontend/build")));
+}
+console.log(__dirname)
+console.log(path.join(__dirname, "frontend/build"))
 
 //Routes for CRUD Operations
-
 //CREATE Operation is a post operation
 app.post("/todos", async (req, res) => {
   try {
@@ -80,6 +96,14 @@ app.delete("/todos/:id", async (req, res) => {
     console.error(err.message);
   }
 });
-app.listen(port, () => {
-  console.log(`Listening at port ${port}`);
+
+
+//Catch all method
+//if it happens to go beyoud the defined path
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
+})
+
+app.listen(PORT, () => {
+  console.log(`Listening at port ${PORT}`);
 });

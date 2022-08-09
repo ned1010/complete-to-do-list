@@ -9,7 +9,7 @@ export default function ToDoList() {
   //get all the tasks from the backend
   const getAllTheTasks = async () => {
     try {
-      const allTheTasks = await fetch("http://localhost:4000/todos");
+      const allTheTasks = await fetch("/todos");
       const jsonData = await allTheTasks.json();
       setTasks(jsonData);
     } catch (err) {
@@ -26,7 +26,7 @@ export default function ToDoList() {
   const deleteToDo = async (id) => {
     try {
       console.log(id);
-      const deleteList = await fetch(`http://localhost:4000/todos/${id}`, {
+      const deleteList = await fetch(`/todos/${id}`, {
         method: "DELETE",
       });
       setTasks((prevTasks) => {
