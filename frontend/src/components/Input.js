@@ -19,7 +19,7 @@ export default function Input() {
       });
 
       //this helps to reload the page after adding
-      window.location = "/";
+      // window.location = "/";
 
       console.log(response);
     } catch (err) {
