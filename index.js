@@ -100,9 +100,9 @@ app.delete("/todos/:id", async (req, res) => {
 
 //Catch all method
 //if it happens to go beyoud the defined path
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend/build/index.html"));
-})
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "frontend/build/index.html"));
+// })
 
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`);
